@@ -1,5 +1,5 @@
 import './App.css';
-import { Counter, CounterWithHook } from './components';
+import { Counter, CounterWithHook , LoginPage } from './components';
 
 function App() {
     return (
@@ -10,7 +10,8 @@ function App() {
             {/* <ObjectLiterals/> */}
             {/* <BasicFuntions/> */}
             {/* <Counter /> */}
-            <CounterWithHook/>
+            {/* <CounterWithHook/> */}
+            <LoginPage/>
         </main>
     );
 }
