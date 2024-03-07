@@ -1,5 +1,5 @@
 import './App.css';
-import { BasicFuntions, BasicTypes, ObjectLiterals } from './typescript';
+import { Counter } from './components';
 
 function App() {
     return (
@@ -8,7 +8,8 @@ function App() {
             {/* Aqui*/}
             {/* <BasicTypes /> */}
             {/* <ObjectLiterals/> */}
-            <BasicFuntions/>
+            {/* <BasicFuntions/> */}
+            <Counter />
         </main>
     );
 }
