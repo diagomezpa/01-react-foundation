@@ -6,7 +6,7 @@ export const UsersPage = () => {
 
  useEffect(()=> {
     axios.get('https://reqres.in/api/users?page=2')
-    .then(resp => console.log(resp.data));
+    .then(resp => console.log(resp.data.total));
     // fetch('https://reqres.in/api/users?page=2')
     // .then(resp => resp.json())
     // .then(data => console.log(data) );
