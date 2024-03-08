@@ -1,5 +1,5 @@
 import './App.css';
-import { Counter, CounterWithHook , LoginPage ,UsersPage} from './components';
+import { Counter, CounterWithHook , FormsPage, LoginPage ,UsersPage} from './components';
 
 function App() {
     return (
@@ -12,7 +12,8 @@ function App() {
             {/* <Counter /> */}
             {/* <CounterWithHook/> */}
             {/* <LoginPage/> */}
-            <UsersPage/>
+            {/* <UsersPage/> */}
+            <FormsPage/>
         </main>
     );
 }
