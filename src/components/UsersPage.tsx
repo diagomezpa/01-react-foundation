@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { useEffect } from 'react';
-import { ReqResUserListResponse } from '../interfaces';
+import { useEffect, useState } from 'react';
+import type { ReqResUserListResponse, User } from '../interfaces';
 
-const loadUsers = async () => {
+const loadUsers = async (): Promise<User[]> => {
     try {
         const { data } = await axios.get<ReqResUserListResponse>(
             'https://reqres.in/api/users?page=2'
@@ -15,8 +15,9 @@ const loadUsers = async () => {
 };
 
 export const UsersPage = () => {
+    const [users, setUsers] = useState<User[]>([]);
     useEffect(() => {
-        loadUsers().then(users => console.log(users))
+        loadUsers().then((users) => setUsers(users));
         // fetch('https://reqres.in/api/users?page=2')
         // .then(resp => resp.json())
         // .then(data => console.log(data) );
@@ -27,19 +28,34 @@ export const UsersPage = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Avatar</th>
+                    <th>Avatar</th>
                         <th>Nombre</th>
                         <th>Email</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>avatar</td>
-                        <td>nombre</td>
-                        <td>email</td>
-                    </tr>
+                    {users.map((user) => (
+                        <UserRow key={user.id} user={user}></UserRow>
+                    ))}
                 </tbody>
             </table>
         </>
     );
 };
+
+interface Props {
+    user: User;
+}
+
+export const UserRow = ({user}:Props) => {
+    const {avatar, first_name, last_name, email} = user;
+  return (
+    <tr key={user.id}>
+        <td><img style={{width:'50px'}} 
+            src={avatar} alt="User avatar"/></td>
+        <td>{first_name}{last_name}</td>
+        <td>{email}</td>
+    </tr>
+  )
+}
+
